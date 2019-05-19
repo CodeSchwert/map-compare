@@ -1,0 +1,50 @@
+version: "3.6"
+
+services:
+  image-server:
+    image: "nginx:1.15"
+    ports:
+      - "8080:80"
+    container_name: "map-image-server"
+    volumes:
+      - type: bind
+        source: ./image-server/conf.d
+        target: /etc/nginx/conf.d
+      - type: bind
+        source: ./image-server/index.html
+        target: /mnt/images/index.html
+      - type: bind
+        source: ./image-server/favicon.ico
+        target: /mnt/images/favicon.ico
+      # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+      # Image folder mount point
+      # Assumes the images folder is at the same folder level as map-compare
+      # project folder. Change this config as required.
+      # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+      - type: bind
+        source: ../map-compare-data
+        target: /mnt/images/map-compare-data
+  mongodb:
+    image: "mongo:3.6"
+    ports:
+      - "27017:27017"
+    networks:
+      - mapcomp
+    container_name: "map-mongodb"
+  map-compare-server:
+    build: "./map-compare-server"
+    image: "map-compare/map-compare-server:latest"
+    ports:
+      - "9000:9000"
+    container_name: "map-compare-server"
+    volumes:
+      - type: bind
+        source: "../map-compare-data"
+        target: "/usr/map-compare-data"
+    networks:
+      - mapcomp
+    depends_on:
+      - mongodb
+networks:
+  mapcomp:
+    driver: bridge

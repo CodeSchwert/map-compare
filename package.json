@@ -1,0 +1,23 @@
+{
+  "name": "map-compare",
+  "version": "1.0.0",
+  "description": "Geo-referenced map compare application stack.",
+  "main": "docker-compose.yml",
+  "engines": {
+    "node": ">=10.0.0",
+    "npm": ">=6.0.0"
+  },  
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:CodeSchwert/map-compare.git"
+  },
+  "author": "CodeSchwert and contributors",
+  "license": "SEE LICENSE IN LICENSE",
+  "bugs": {
+    "url": "https://github.com/CodeSchwert/map-compare/issues"
+  },
+  "homepage": "https://github.com/CodeSchwert/map-compare#readme"
+}
