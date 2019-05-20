@@ -13,7 +13,7 @@ const { isDateFolder, procImageDir } = require('./loader');
  */
 const { DELTA_DATA_FOLDER, MONGO_URI } = process.env;
 const DELTA_DATA = path.resolve(DELTA_DATA_FOLDER);
-const IGNORE_PROJECTS = ['osd-icons'];
+const IGNORE_PROJECTS = ['osd-icons', '.git'];
 
 /**
  * Mongoose Configuration
