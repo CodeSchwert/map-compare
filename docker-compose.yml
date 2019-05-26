@@ -1,4 +1,4 @@
-version: "3.6"
+version: "3.7"
 
 services:
   image-server:
@@ -24,6 +24,8 @@ services:
       - type: bind
         source: ../map-compare-data
         target: /mnt/images/map-compare-data
+    networks:
+      - mapcomp
   mongodb:
     image: "mongo:3.6"
     ports:
@@ -45,6 +47,8 @@ services:
       - mapcomp
     depends_on:
       - mongodb
+
 networks:
   mapcomp:
+    name: map-compare-stack
     driver: bridge

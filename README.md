@@ -15,7 +15,7 @@ docker-compose up -d mongodb
 docker-compose build map-compare-server
 
 # run the gdal and loader scripts
-docker-compose run --rm map-compare-server node gdalinfo_json.js
+# (data dir should already be populated with json files); docker-compose run --rm map-compare-server node gdalinfo_json.js
 docker-compose run --rm map-compare-server node itl_loader.js
 
 # still in map-compare/ directory
