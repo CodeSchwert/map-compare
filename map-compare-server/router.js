@@ -17,7 +17,7 @@ const { date_getAll } =require('./lib/routes/date');
 module.exports = (app) => {
   // configure cors before adding routes!
   app.use(cors({
-    // origin: true,
+    origin: true,
     methods: CORS_METHODS,
     credentials: true,
     allowedHeaders: CORS_ALLOWED_HEADERS,
